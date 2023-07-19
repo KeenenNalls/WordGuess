@@ -11,6 +11,12 @@ import java.util.Scanner;
  * @date 5/27/21 11:02 AM
  */
 public class Hangman {
+    private char[] solutionArray;
+    private char[] playerArray; // Declare playerArray as an instance variable
+
+    public Hangman(String[] wordList) {
+    }
+
     //starts the game
     //a random word is chosen from a list
     //the number of tries allowed is set to the length of the word
@@ -26,7 +32,7 @@ public class Hangman {
     //after the while loop
     //if the word is not guessed, player loses
     public static void main(String[] args) {
-        String[] wordList = {"dog","wale", "nipsey", "jordan", "phone", "son"};
+        String[] wordList = {"dog", "wale", "nipsey", "jordan", "phone", "son"};
 
         int randomWordChooser = (int) (Math.random() * 6);
         char[] solutionArray = wordList[randomWordChooser].toCharArray();
@@ -57,14 +63,30 @@ public class Hangman {
             }
             counter--;
         }
-        if (Arrays.equals(playerArray, solutionArray)){
+        if (Arrays.equals(playerArray, solutionArray)) {
             System.out.print("Congrats you guessed the word correctly: ");
             System.out.print(playerArray);
             System.out.println("\nYou won");
         }
     }
-}
 
+    public void setTestWord(char[] testWord) {
+        this.solutionArray = testWord;
+    }
+
+    public void playGameWithTestInput(String userGuesses) {
+    }
+
+    public boolean isGameWon() {
+
+        return Arrays.equals(playerArray, solutionArray);
+    }
+
+    public boolean isGameLost() {
+        int counter = 0;
+        return counter == 0;
+    }
+}
 
 
 
